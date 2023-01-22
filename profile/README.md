@@ -12,6 +12,8 @@ Read how the [crew](https://figuren.theater/crew/) started the idea, that powers
 ## How it goes
 ![](https://raw.githubusercontent.com/figuren-theater/.github/main/assets/pagespeed-figuren.theater.svg)
 
+<!-- BLOG-POST-LIST:START -->
+<!-- BLOG-POST-LIST:END -->
 
 <!--
 
