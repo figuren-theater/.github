@@ -10,7 +10,7 @@
 Read how the [crew](https://figuren.theater/crew/) started the idea, that powers *this* github organization and all of its repos, in their first blog-post *[Wie alles begann](https://meta.figuren.theater/blog/2020/03/wie-alles-begann/)*, published 2020 in german.
 
 ## How it goes
-![](../assets/pagespeed-figuren.theater.svg)
+![](https://raw.githubusercontent.com/figuren-theater/.github/main/assets/pagespeed-figuren.theater.svg)
 
 
 <!--
