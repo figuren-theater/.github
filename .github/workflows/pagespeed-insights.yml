@@ -17,7 +17,7 @@ jobs:
       - name: PageSpeed scores with detailed report including PWA
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.pagespeed.svg
+          filename: assets/pagespeed-figuren.theater.svg
           token: NOT_NEEDED
           base: ""
           plugin_pagespeed: yes
