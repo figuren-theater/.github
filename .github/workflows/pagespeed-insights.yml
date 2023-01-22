@@ -1,0 +1,28 @@
+name: Latest pagespeed-insights data workflow
+on:
+  schedule: # Run workflow automatically
+    # * is a special character in YAML so you have to quote this string
+    # This triggers the workflow every day at 5:30 and 17:30 UTC
+    - cron: '30 5,17 * * *'
+permissions:
+  contents: write # To write the generated contents to the readme
+
+jobs:
+  update-pagespeed-insights-data:
+    name: Update this repo's pagespeed-insights data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: PageSpeed scores with detailed report including PWA
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.pagespeed.svg
+          token: NOT_NEEDED
+          base: ""
+          plugin_pagespeed: yes
+          plugin_pagespeed_detailed: yes
+          plugin_pagespeed_screenshot: yes
+          plugin_pagespeed_pwa: yes
+          plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
+          plugin_pagespeed_url: https://figuren.theater/
