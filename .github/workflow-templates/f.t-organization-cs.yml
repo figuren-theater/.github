@@ -7,6 +7,11 @@ on:
     branches: [ $default-branch ]
 
 jobs:
+  require-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require Checklist
+        uses: mheap/require-checklist-action@v2
   triage:
     runs-on: ubuntu-latest
     steps:
