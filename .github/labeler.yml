@@ -1,0 +1,6 @@
+ci/cd:
+  - .github/**
+
+documentation:
+  - README.md
+  - ./*.md
