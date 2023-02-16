@@ -2,9 +2,9 @@ name: figuren.theater Organization Standards for push & pull
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ main ]
   pull_request:
-    branches: [ $default-branch ]
+    branches: [ main ]
 
 
 jobs:
@@ -13,6 +13,12 @@ jobs:
     steps:
       - name: Require Checklist
         uses: mheap/require-checklist-action@v2
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v3
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"  
   size-label:
     runs-on: ubuntu-latest
     steps:
