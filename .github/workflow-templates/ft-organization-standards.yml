@@ -8,6 +8,11 @@ on:
 
 
 jobs:
+  require-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require Checklist
+        uses: mheap/require-checklist-action@v2
   size-label:
     runs-on: ubuntu-latest
     steps:
