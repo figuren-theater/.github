@@ -1,6 +1,6 @@
 {
-    "name": "figuren.theater Issue gardening",
-    "description": "Filing new issues to the project/1 of f.t",
+    "name": "🌱 issue gardening",
+    "description": "Automatically add new issues to the PROJECT/1 of the figuren.theater organization.",
     "iconName": "ft-logo",
     "categories": [
         "Automation"
