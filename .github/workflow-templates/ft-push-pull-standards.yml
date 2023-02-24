@@ -5,7 +5,7 @@ on:
     branches: [ $default-branch ]
 
 jobs:
-  call-workflow-passing-data:
+  call-workflow-ft-push-pull-standards:
     permissions:
       contents: read
       pull-requests: write
