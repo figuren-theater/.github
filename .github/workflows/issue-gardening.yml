@@ -1,0 +1,19 @@
+name: Issue gardening for figuren.theater
+on:
+  workflow_call:  
+  issues:
+    types:
+      - opened
+      
+jobs:
+  add-to-global-projectboard:
+    name: Add issue to project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@0.4.0
+        with:
+          # You can target a repository in a different organization
+          # to the issue
+          project-url: https://github.com/orgs/figuren-theater/projects/1
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+     
