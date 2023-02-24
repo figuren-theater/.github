@@ -1,8 +1,10 @@
 name: figuren.theater Organization Standards for push & pull
 
 on:
-  pull_request:
-    branches: [ main ]
+  workflow_call:
+    secrets:
+      token:
+        required: true
 
 
 jobs:
@@ -14,9 +16,10 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v3
+      - uses: actions/labeler@v4
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"  
+          repo-token: ${{ secrets.token }}
+          configuration-path: figuren-theater/.github/.github/labeler.yml
   size-label:
     runs-on: ubuntu-latest
     steps:
