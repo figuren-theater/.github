@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-```tasklist
+```[tasklist]
 ### branch  `develop` 
 - [ ] Document, add & commit all changes to the repo
 - [ ] `git pull` all PRs
@@ -17,7 +17,8 @@ assignees: ''
 - [ ] bump version
 - [ ] open PR on `main` branch
 ```
-```tasklist
+
+```[tasklist]
 ### branch  `main` 
 - [ ] merge `development` PR
 - [ ] tag commit with new version
