@@ -1,7 +1,7 @@
 ---
 name: Update ft-package
 about: "[More an internal] issue template to update one of our packages"
-title: "[UPDATE]"
+title: Update ft-package
 labels: ''
 assignees: ''
 
@@ -9,18 +9,18 @@ assignees: ''
 
 ```[tasklist]
 ### branch  `develop` 
-- [ ] Document, add & commit all changes to the repo
-- [ ] `git pull` all PRs
-- [ ] review and merge pulled PRs
-- [ ] update dependencies with `composer update --no-install -vv`
-- [ ] commit all changes to the repo
-- [ ] bump version
-- [ ] open PR on `main` branch
+- [ ] Documented, added & commited all changes to the repo
+- [ ] `git pull`ed all PRs
+- [ ] reviewed and merged the pulled PRs
+- [ ] updated dependencies with `composer update --no-install -vv`
+- [ ] commited all changes to the repo
+- [ ] bumped version
+- [ ] opened PR on `main` branch
 ```
 
 ```[tasklist]
 ### branch  `main` 
-- [ ] merge `development` PR
-- [ ] tag commit with new version
+- [ ] merged `development` PR
+- [ ] tagged commit with new version
 - [ ] `git push && git push --tags`
 ```
