@@ -13,9 +13,9 @@ Read how the [crew](https://figuren.theater/crew/) started the idea, that powers
 ![](https://raw.githubusercontent.com/figuren-theater/.github/main/assets/pagespeed-figuren.theater.svg)
 
 <!-- BLOG-POST-LIST:START -->
+- [🎉 Etappensieg: Digitalisierung in der Figurentheater Szene](https://meta.figuren.theater/blog/2023/05/%f0%9f%8e%89-etappensieg-digitalisierung-in-der-figurentheater-szene/)
 - [Was geht](https://meta.figuren.theater/blog/2022/04/was-geht/)
 - [Portal-Horror für freie Künste](https://meta.figuren.theater/blog/2022/04/portal-horror-fuer-freie-kuenste/)
-- [Keinen blassen Schimmer. Na und!](https://meta.figuren.theater/blog/2021/04/keinen-blassen-schimmer/)
 <!-- BLOG-POST-LIST:END -->
 
 <!--
