@@ -2,56 +2,56 @@ LABEL_GROUPS:
   DEFAULT:
     bug:
       description: Something isn't working
-      color: #d73a4a
+      color: d73a4a
     dependencies:
       description: 3rd-party Dependencies 
-      color: #0b203a
+      color: 0b203a
     documentation:
       description: Improvements or additions to documentation
-      color: #0075ca
+      color: 0075ca
     duplicate:
       description: This issue or pull request already exists
-      color: #cfd3d7
+      color: cfd3d7
     enhancement:
       description: New feature or request
-      color: #a2eeef
+      color: a2eeef
     good first issue:
       description: Good for newcomers
-      color: #7057ff
+      color: 7057ff
     help wanted:
       description: Extra attention is needed
-      color: #008672
+      color: 008672
     i18n:
       description: Internationalization & Localization related issues
-      color: #0f3c4c
+      color: 0f3c4c
     invalid:
       description: This doesn't seem right
-      color: #e4e669
+      color: e4e669
     needs research:
       description: Needs further investigation and research
-      color: #ed8661
+      color: ed8661
     tracking issue:
       description: Long term planning and tracking on a story, topic, or PART
-      color: #d20394
+      color: d20394
     security:
       description: Issues that have security implications
-      color: #ff0000
+      color: ff0000
     wontfix:
       description: This will not be worked on
-      color: #000000
+      color: 000000
     PART WP core:
       description: WordPress core related
-      color: #efefef
+      color: efefef
     PART Module:
       description: A typical ft-module, which is almost a normal WP mu-plugin
-      color: #d20394
+      color: d20394
     PART Plugin:
       description: A typical WordPress plugin or mu-plugin
-      color: #3858e9
+      color: 3858e9
     PART Theme:
       description: A typical WordPress theme
-      color: #3858e9
+      color: 3858e9
     PART Website:
       description: A website on the figuren.theater platform
-      color: #e2ea00
+      color: e2ea00
 REPOS:
