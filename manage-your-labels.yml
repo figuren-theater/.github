@@ -20,7 +20,7 @@ LABEL_GROUPS:
       color: 7057ff
     help wanted:
       description: Extra attention is needed
-      color: 008672
+      color: '008672'
     i18n:
       description: Internationalization & Localization related issues
       color: 0f3c4c
@@ -38,7 +38,7 @@ LABEL_GROUPS:
       color: ff0000
     wontfix:
       description: This will not be worked on
-      color: 000000
+      color: '000000'
     PART WP core:
       description: WordPress core related
       color: efefef
