@@ -1,7 +1,7 @@
 name: manage-labels-across-org
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "13 03 * * *"
   workflow_dispatch:
 jobs:
   mirror-labels:
