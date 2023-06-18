@@ -45,6 +45,9 @@ LABEL_GROUPS:
     PART Module:
       description: A typical ft-module, which is almost a normal WP mu-plugin
       color: d20394
+    PART Story:
+      description: A (user) story handled by one or more ft-modules
+      color: e2ea00
     PART Plugin:
       description: A typical WordPress plugin or mu-plugin
       color: 3858e9
