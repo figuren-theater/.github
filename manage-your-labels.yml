@@ -1,5 +1,8 @@
 LABEL_GROUPS:
   DEFAULT:
+    automation:
+      description: CI/CD and all other kinds of workflows
+      color: 238636
     bug:
       description: Something isn't working
       color: d73a4a
@@ -7,7 +10,7 @@ LABEL_GROUPS:
       description: 3rd-party Dependencies 
       color: 0b203a
     documentation:
-      description: Improvements or additions to documentation
+      description: Improvements or additions to documentation for users and or developers
       color: 0075ca
     duplicate:
       description: This issue or pull request already exists
@@ -30,12 +33,12 @@ LABEL_GROUPS:
     needs research:
       description: Needs further investigation and research
       color: ed8661
-    tracking issue:
-      description: Long term planning and tracking on a story, topic, or PART
-      color: d20394
     security:
       description: Issues that have security implications
       color: ff0000
+    tracking issue:
+      description: Long term planning and tracking on a story, topic, or PART
+      color: d20394
     wontfix:
       description: This will not be worked on
       color: '000000'
