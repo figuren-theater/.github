@@ -2,7 +2,7 @@ LABEL_GROUPS:
   DEFAULT:
     automation:
       description: CI/CD and all other kinds of workflows
-      color: 238636
+      color: '238636'
     bug:
       description: Something isn't working
       color: d73a4a
