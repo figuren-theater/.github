@@ -1,8 +1,0 @@
-{
-    "name": "Standards for push & pull",
-    "description": "Labeling & project management automation for push and pull_request's within the figuren.theater Organization",
-    "iconName": "ft-logo",
-    "categories": [
-        "Continuous integration"
-    ]
-}
