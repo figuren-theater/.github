@@ -19,8 +19,8 @@ autolabeler:
       - '*.md'
 
 # https://github.com/release-drafter/release-drafter#exclude-contributors
-exclude-contributors:
-  - 'carstingaxion'
+# exclude-contributors:
+  # - 'carstingaxion'
 
 # https://github.com/release-drafter/release-drafter#categorize-pull-requests
 categories:
@@ -48,13 +48,14 @@ categories:
           - 'dependencies'
           - 'maintenance'
 
-change-template: '- $TITLE @$AUTHOR ([#$NUMBER]($URL))'
+change-template: '- $TITLE ([#$NUMBER]($URL))'
 # change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 
 # https://github.com/release-drafter/release-drafter#version-resolver
 version-resolver:
   major:
     labels:
+      # TODO #40 Find a label, that triggers 'major' releases
       - 'changelog:removed'
   minor:
     labels:
