@@ -34,11 +34,11 @@ categories:
           - 'feature'
           - 'enhancement'
     # TODO #36 Create 'Deprecated' label or similar
-    - title: 'Deprecated'
-      labels:
+    #- title: 'Deprecated'
+    #  labels:
     # TODO #37 Create 'Removed' label or similar
-    - title: 'Removed'
-      labels:
+    #- title: 'Removed'
+    #  labels:
     - title: '🐛 Fixed'
       labels:
           - 'fix'
