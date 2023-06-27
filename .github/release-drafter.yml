@@ -13,7 +13,7 @@ tag-template: '$RESOLVED_VERSION'
 autolabeler:
   - label: 'automation'
     files:
-      - '.github/workflows/*.*'
+      - '.github/workflows/*'
   - label: 'documentation'
     files:
       - '*.md'
@@ -27,32 +27,28 @@ categories:
     - title: 'Security'
       labels:
           - 'security'
-          - 'changelog:security'
     - title: '🚀 Added'
       labels:
           - 'automation'
           - 'documentation'
           - 'feature'
           - 'enhancement'
-          - 'changelog:added'
+    # TODO #36 Create 'Deprecated' label or similar
     - title: 'Deprecated'
       labels:
-          - 'changelog:deprecated '
+    # TODO #37 Create 'Removed' label or similar
     - title: 'Removed'
       labels:
-          - 'changelog:removed'
     - title: '🐛 Fixed'
       labels:
           - 'fix'
-          - 'bugfix'
           - 'bug'
-          - 'changelog:fixed'
     - title: 'Dependency Updates & Maintenance'
       labels:
           - 'dependencies'
           - 'maintenance'
 
-change-template: '- $TITLE ([#$NUMBER]($URL))'
+change-template: '- $TITLE @$AUTHOR ([#$NUMBER]($URL))'
 # change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 
 # https://github.com/release-drafter/release-drafter#version-resolver
@@ -66,16 +62,11 @@ version-resolver:
       - 'documentation'
       - 'feature'
       - 'enhancement'
-      - 'changelog:added'
-      - 'changelog:deprecated '
   patch:
     labels:
-      - 'fix'
-      - 'bugfix'
-      - 'bug'
-      - 'changelog:fixed'
       - 'security'
-      - 'changelog:security'
+      - 'fix'
+      - 'bug'
       - 'dependencies'
       - 'maintenance'
   default: patch
