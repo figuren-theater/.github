@@ -1,0 +1,8 @@
+{
+    "name": "Draft or update the next release",
+    "description": "Drafts or updates the next release notes as pull requests are merged into main.",
+    "iconName": "ft-logo",
+    "categories": [
+        "Continuous integration"
+    ]
+}
