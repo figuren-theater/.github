@@ -24,27 +24,29 @@ exclude-contributors:
 
 # https://github.com/release-drafter/release-drafter#categorize-pull-requests
 categories:
-    - title: 🚀 Added
+    - title: 'Security'
       labels:
+          - 'security'
+          - 'changelog:security'
+    - title: '🚀 Added'
+      labels:
+          - 'automation'
+          - 'documentation'
           - 'feature'
           - 'enhancement'
           - 'changelog:added'
-    - title: Deprecated
+    - title: 'Deprecated'
       labels:
           - 'changelog:deprecated '
-    - title: Removed
+    - title: 'Removed'
       labels:
           - 'changelog:removed'
-    - title: 🐛 Fixed
+    - title: '🐛 Fixed'
       labels:
           - 'fix'
           - 'bugfix'
           - 'bug'
           - 'changelog:fixed'
-    - title: Security
-      labels:
-          - 'security'
-          - 'changelog:security'
     - title: 'Dependency Updates & Maintenance'
       labels:
           - 'dependencies'
@@ -60,6 +62,8 @@ version-resolver:
       - 'changelog:removed'
   minor:
     labels:
+      - 'automation'
+      - 'documentation'
       - 'feature'
       - 'enhancement'
       - 'changelog:added'

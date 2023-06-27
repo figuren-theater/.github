@@ -1,8 +1,0 @@
-{
-    "name": "Update Changelog & Release",
-    "description": "Update a CHANGELOG.md file based on merged PRs and create a release whenever a new tag is pushed.",
-    "iconName": "ft-logo",
-    "categories": [
-        "Continuous integration"
-    ]
-}
