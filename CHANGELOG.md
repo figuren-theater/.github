@@ -16,7 +16,4 @@ All notable changes to this project will be documented in this file.
 - Develop ([#33](https://github.com/figuren-theater/.github/pull/33))
 - Develop ([#32](https://github.com/figuren-theater/.github/pull/32))
 
-
-## 0.0.0 - 2023-06-27
-
 No documentation until now.
