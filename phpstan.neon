@@ -1,0 +1,13 @@
+#$ vendor/bin/phpstan analyze
+
+parameters:
+    level: max
+    inferPrivatePropertyTypeFromConstructor: true
+    # bootstrapFiles:
+		# Missing constants, function and class stubs
+    paths:
+        - %currentWorkingDirectory%/plugin.php
+        - %currentWorkingDirectory%/inc/
+        # - %currentWorkingDirectory%/templates/
+    # excludePaths:
+    #    - %currentWorkingDirectory%/vendor/
