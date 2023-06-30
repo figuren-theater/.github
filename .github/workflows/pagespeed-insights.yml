@@ -30,3 +30,9 @@ jobs:
           plugin_pagespeed_url: https://figuren.theater/
           user: figuren-theater-bot
           committer_token: ${{ secrets.BOT_TOKEN }}
+      - name: Push to protected branch
+        uses: CasperWA/push-protected@v2
+        with:
+          token: ${{ secrets.PUSH_TO_PROTECTED_BRANCH }}
+          branch: main
+          unprotect_reviews: true
