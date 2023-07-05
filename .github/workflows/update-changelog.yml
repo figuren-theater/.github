@@ -49,18 +49,3 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           branch: ${{ github.event.release.target_commitish }}
           unprotect_reviews: true
-
-          #        - name: Commit updated CHANGELOG
-#          uses: stefanzweifel/git-auto-commit-action@v4
-#          with:
-#            branch: ${{ github.event.release.target_commitish }}
-#            commit_message: Update CHANGELOG
-#             file_pattern: CHANGELOG.md
-#
-#          # Optional commit user and author settings
-#          # defaults to "github-actions[bot]"
-#          commit_user_name: figuren-theater-bot
-#          # defaults to "41898282+github-actions[bot]@users.noreply.github.com"
-#          commit_user_email: email-roboter@figuren.theater
-#          # defaults to author of the commit that triggered the run
-#          commit_author: Frieda Theodor Automatisierungs-Bot <email-roboter@figuren.theater>
