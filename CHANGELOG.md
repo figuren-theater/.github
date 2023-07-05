@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.4...HEAD)
+## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.5...HEAD)
+
+## [0.1.5](https://github.com/figuren-theater/.github/compare/0.1.4...0.1.5) - 2023-07-05
+
+- Disable automatic running on push ([#53](https://github.com/figuren-theater/.github/pull/53))
 
 ## [0.1.4](https://github.com/figuren-theater/.github/compare/0.1.2...0.1.4) - 2023-07-05
 
