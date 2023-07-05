@@ -3,7 +3,7 @@ name: Build, test & measure
 on:
   workflow_call:
   pull_request:
-  push:
+  # push:
 
 jobs:
   call-workflow-build-test-measure:
