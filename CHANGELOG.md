@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.2...HEAD)
+## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.4...HEAD)
+
+## [0.1.4](https://github.com/figuren-theater/.github/compare/0.1.2...0.1.4) - 2023-07-05
+
+Test workflow runs to update CHANGELOG.md via PR
 
 ## [0.1.2](https://github.com/figuren-theater/.github/compare/0.1.1...0.1.2) - 2023-06-30
 
