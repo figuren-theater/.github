@@ -20,7 +20,7 @@ jobs:
         # or
         # b) the Personal Access Token needs to belong to an Administrator.
         #
-        # Add the following to the 'with:' group: 'token: ${{ secrets.PAT }}'
+        # Add the following to 'with:' 'token: ${{ secrets.PAT }}'
         #
         uses: actions/checkout@v3
         with:
@@ -43,12 +43,19 @@ jobs:
           committer_name: Frieda Theodor Automatisierungs-Bot <email-roboter@figuren.theater>
           committer_email: email-roboter@figuren.theater
 
+  #    # - name: Run mandated tests
+  #  call-workflow-build-test-measure:
+  #      uses: figuren-theater/code-quality/.github/workflows/build-test-measure.yml@main
+  #      with:
+  #        secrets: inherit
+
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
         with:
           token: ${{ secrets.BOT_TOKEN }}
-          branch: ${{ github.event.release.target_commitish }}
-          unprotect_reviews: true
+          # branch: ${{ github.event.release.target_commitish }}
+          branch: main
+          #unprotect_reviews: true # has anoying side-effect: settings stays disabled if workflow fails
 
 
       # @TODO #57 Automatically bump version in all relevant files
@@ -80,4 +87,5 @@ jobs:
               release_id: release.data.id,
               draft: false,
               prerelease: false
+              make_latest: true
             });
