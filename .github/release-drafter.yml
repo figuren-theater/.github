@@ -5,6 +5,7 @@
 # by creating a repository named .github with the file .github/release-drafter.yml.
 #
 # https://github.com/release-drafter/release-drafter
+commitish: main
 
 name-template: '$RESOLVED_VERSION'
 tag-template: '$RESOLVED_VERSION'
@@ -48,7 +49,9 @@ categories:
           - 'dependencies'
           - 'maintenance'
 
-change-template: '- $TITLE ([#$NUMBER]($URL))'
+change-template: |
+  - $TITLE ([#$NUMBER]($URL))
+    $BODY
 # change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 
 # https://github.com/release-drafter/release-drafter#version-resolver
@@ -71,5 +74,9 @@ version-resolver:
       - 'dependencies'
       - 'maintenance'
   default: patch
+
+
 template: |
   $CHANGES
+
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
