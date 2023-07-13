@@ -69,12 +69,12 @@ jobs:
           github-token: ${{ secrets.BOT_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
-            const release = await github.repos.getReleaseByTag({
+            const release = await github.rest.repos.getReleaseByTag({
               owner,
               repo,
               tag: context.ref.replace('refs/tags/', '')
             });
-            await github.repos.updateRelease({
+            await github.rest.repos.updateRelease({
               owner,
               repo,
               release_id: release.data.id,
