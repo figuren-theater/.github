@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+  #    - name: Checkout code
         # Push to protected branches
         # If your repository uses protected branches you have to make some changes
         # to your Workflow for the Action to work properly:
@@ -74,14 +74,22 @@ jobs:
         #
         # Add the following to 'with:' 'token: ${{ secrets.PAT }}'
         #
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.BOT_TOKEN }}
-          ref: 'main'
+  #      uses: actions/checkout@v3
+  #      with:
+  #        token: ${{ secrets.BOT_TOKEN }}
+  #        ref: 'main'
+
+      - name: Get latest commit ID
+        run: |
+          latest_commit_id=$(git rev-parse HEAD)
+          echo "The latest commit ID is $latest_commit_id"
+          echo "LATEST_COMMIT_ID=$latest_commit_id" >> $GITHUB_ENV
 
       - uses: jimeh/update-tags-action@v1
         with:
           tags: ${{ github.event.release.tag_name }},latest
+          github_token: ${{ secrets.BOT_TOKEN }}
+          ref: ${{ env.LATEST_COMMIT_ID }}
 
       - name: publish pre-Release as Release
         uses: actions/github-script@v5
