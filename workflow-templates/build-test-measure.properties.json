@@ -1,0 +1,8 @@
+{
+    "name": "Build, test & measure",
+    "description": "Automatically validate, test and measure the (code) quality for the figuren.theater platform.",
+    "iconName": "ft-logo",
+    "categories": [
+        "Automation"
+    ]
+}
