@@ -63,6 +63,9 @@ jobs:
           OLD_VERSION: ${{ steps.latest_release.outputs.result }}
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
+          echo "Old version: $OLD_VERSION"
+          echo "NEW version: $NEW_VERSION"
+
           for file in plugin.php package.json; do
             if [ -f "$file" ]; then
               sed -i "s/$OLD_VERSION/$NEW_VERSION/g" $file
@@ -71,8 +74,7 @@ jobs:
             fi
           done
 
-          git add plugin.php package.json
-          git commit -m "Update version to $NEW_VERSION"
+          git commit -am "Update version to $NEW_VERSION"
 
     #  - uses: EndBug/add-and-commit@v9
     #    with:
