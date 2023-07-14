@@ -58,18 +58,28 @@ jobs:
             });
             return release.data.tag_name;
 
-      - name: Update version number
+      - name: Update version number in files
         env:
           OLD_VERSION: ${{ steps.latest_release.outputs.result }}
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
-          for file in plugin.php app.json; do
+          for file in plugin.php package.json; do
             if [ -f "$file" ]; then
               sed -i "s/$OLD_VERSION/$NEW_VERSION/g" $file
             else
               echo "File $file does not exist"
             fi
           done
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: 'plugin.php package.json'
+          message: Update version number to ${{ github.event.release.tag_name }}
+          # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
+          # Default: true
+          push: false
+          committer_name: Frieda Theodor Automatisierungs-Bot <email-roboter@figuren.theater>
+          committer_email: email-roboter@figuren.theater
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
