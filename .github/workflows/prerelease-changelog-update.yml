@@ -46,6 +46,30 @@ jobs:
           committer_email: email-roboter@figuren.theater
 
       # @TODO #57 Automatically bump version in all relevant files
+      - name: Get latest release version
+        id: latest_release
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const release = await github.repos.getLatestRelease({
+              owner,
+              repo
+            });
+            return release.data.tag_name;
+
+      - name: Update version number
+        env:
+          OLD_VERSION: ${{ steps.latest_release.outputs.result }}
+          NEW_VERSION: ${{ github.event.release.tag_name }}
+        run: |
+          for file in plugin.php app.json; do
+            if [ -f "$file" ]; then
+              sed -i "s/$OLD_VERSION/$NEW_VERSION/g" $file
+            else
+              echo "File $file does not exist"
+            fi
+          done
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
