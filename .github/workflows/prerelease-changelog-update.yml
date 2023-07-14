@@ -71,18 +71,21 @@ jobs:
             fi
           done
 
-      - uses: EndBug/add-and-commit@v9
-        with:
-          # Adding files
-          # https://github.com/EndBug/add-and-commit/tree/v9/#adding-files
-          add: 'plugin.php package.json'
-          message: Update version to ${{ github.event.release.tag_name }}
-          # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
-          # Default: true
-          push: false
-          committer_name: Frieda Theodor Automatisierungs-Bot <email-roboter@figuren.theater>
-          committer_email: email-roboter@figuren.theater
+          git add plugin.php package.json
+          git commit -m "Update version to $NEW_VERSION"
 
+    #  - uses: EndBug/add-and-commit@v9
+    #    with:
+    #      # Adding files
+    #      # https://github.com/EndBug/add-and-commit/tree/v9/#adding-files
+    #      add: 'plugin.php package.json'
+    #      message: Update version to ${{ github.event.release.tag_name }}
+    #      # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
+    #      # Default: true
+    #      push: false
+    #      committer_name: Frieda Theodor Automatisierungs-Bot <email-roboter@figuren.theater>
+    #      committer_email: email-roboter@figuren.theater
+#
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
         with:
