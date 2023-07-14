@@ -52,7 +52,7 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const release = await github.repos.getLatestRelease({
+            const release = await github.rest.repos.getLatestRelease({
               owner,
               repo
             });
