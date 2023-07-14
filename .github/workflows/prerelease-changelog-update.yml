@@ -63,6 +63,7 @@ jobs:
           OLD_VERSION: ${{ steps.latest_release.outputs.result }}
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
+          git status
           echo "Old version: $OLD_VERSION"
           echo "NEW version: $NEW_VERSION"
 
@@ -73,8 +74,9 @@ jobs:
               echo "File $file does not exist"
             fi
           done
-
+          git status
           git commit -am "Update version to $NEW_VERSION"
+          git status
 
     #  - uses: EndBug/add-and-commit@v9
     #    with:
