@@ -50,13 +50,13 @@ jobs:
         env:
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
-          echo "NEW version: $NEW_VERSION"
 
           if [ -f plugin.php ]; then
+            echo "NEW version in plugin.php: $NEW_VERSION"
             sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\\1$NEW_VERSION/g" plugin.php
+            git commit -am "Update version to $NEW_VERSION"
           fi
 
-          git commit -am "Update version to $NEW_VERSION"
 
     #  - uses: EndBug/add-and-commit@v9
     #    with:
