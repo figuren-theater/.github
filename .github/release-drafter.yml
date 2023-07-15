@@ -49,7 +49,7 @@ categories:
           - 'dependencies'
           - 'maintenance'
 
-change-template: - $TITLE ([#$NUMBER]($URL))
+change-template: '- $TITLE ([#$NUMBER]($URL))'
 # change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 
 # https://github.com/release-drafter/release-drafter#version-resolver
