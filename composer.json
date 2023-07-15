@@ -1,12 +1,31 @@
 {
-    "require-dev": {
-        "figuren-theater/code-quality": "^0.4.3"
+  "name": "figuren-theater/dot_github",
+  "description": "Everything related to figuren.theater - the WordPress Multisite network for puppeteers.",
+  "license": "GPL-3.0+",
+  "keywords": [
+    "wordpress",
+    "theater"
+  ],
+  "authors": [
+    {
+      "name": "figuren.theater",
+      "email": "info@figuren.theater"
     },
-    "config": {
-        "allow-plugins": {
-            "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "ergebnis/composer-normalize": true
-        }
+    {
+      "name": "Carsten Bach",
+      "email": "mail@carsten-bach.de",
+      "homepage": "https://carsten-bach.de",
+      "role": "Developer"
     }
+  ],
+  "require-dev": {
+    "figuren-theater/code-quality": "^0.4.3"
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "ergebnis/composer-normalize": true
+    }
+  }
 }
