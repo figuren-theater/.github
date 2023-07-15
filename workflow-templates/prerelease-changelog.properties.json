@@ -1,5 +1,5 @@
 {
-    "name": "Update Changelog",
+    "name": "pre-Release Changelog Update",
     "description": "A GitHub Action to automatically update a \"Keep a Changelog\" CHANGELOG with the latest release notes.",
     "iconName": "ft-logo",
     "categories": [
