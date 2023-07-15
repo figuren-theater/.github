@@ -19,7 +19,7 @@
     }
   ],
   "require-dev": {
-    "figuren-theater/code-quality": "^0.4.3"
+    "figuren-theater/code-quality": "^0.5.1"
   },
   "config": {
     "allow-plugins": {
