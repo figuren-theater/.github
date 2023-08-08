@@ -2,7 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.7...HEAD)
+## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.8...HEAD)
+
+## [0.1.8](https://github.com/figuren-theater/.github/compare/0.1.7...0.1.8) - 2023-07-15
+
+### 🐛 Fixed
+
+- FIX: Prevent commit on unchanged folder ([#88](https://github.com/figuren-theater/.github/pull/88))
+- FIX: Prevent errors due to non-existent, obligatory file ([#87](https://github.com/figuren-theater/.github/pull/87))
+- FIX: 'Configuration could not be parsed' ([#86](https://github.com/figuren-theater/.github/pull/86))
+- Finish: Establish(ing) quality standards ([#82](https://github.com/figuren-theater/.github/pull/82))
+- Simplify workflow by using plain git commands 2/2 ([#81](https://github.com/figuren-theater/.github/pull/81))
+- PART17: NEW: Automatically bump version numbers in all relevant files ([#80](https://github.com/figuren-theater/.github/pull/80))
+- echo debug ([#79](https://github.com/figuren-theater/.github/pull/79))
+- Simplify workflow by using plain git commands ([#78](https://github.com/figuren-theater/.github/pull/78))
+- PART6: NEW: Automatically bump version numbers in all relevant files ([#77](https://github.com/figuren-theater/.github/pull/77))
+- PART5: NEW: Automatically bump version numbers in all relevant files ([#76](https://github.com/figuren-theater/.github/pull/76))
+- PART4: NEW: Automatically bump version numbers in all relevant files ([#75](https://github.com/figuren-theater/.github/pull/75))
+- Commit version nr. update ([#74](https://github.com/figuren-theater/.github/pull/74))
+- PART2: NEW: Automatically bump version numbers in all relevant files ([#73](https://github.com/figuren-theater/.github/pull/73))
+- Automatically bump version in all relevant files ([#72](https://github.com/figuren-theater/.github/pull/72))
+- Fix indention of PR body in changelogs ([#71](https://github.com/figuren-theater/.github/pull/71))
+- Add some more data to the generated changelog ([#70](https://github.com/figuren-theater/.github/pull/70))
+- Clean up ([#69](https://github.com/figuren-theater/.github/pull/69))
+- Part5: Move the pre-released tag to the last commit, after the change… ([#68](https://github.com/figuren-theater/.github/pull/68))
+- Part4: Move the pre-released tag to the last commit, after the change… ([#67](https://github.com/figuren-theater/.github/pull/67))
+- Add clear ref to checkout ([#66](https://github.com/figuren-theater/.github/pull/66))
+- Part2: Move the pre-released tag to the last commit, after the change… ([#65](https://github.com/figuren-theater/.github/pull/65))
+- Move the pre-released tag to the last commit, after the changelog was… ([#64](https://github.com/figuren-theater/.github/pull/64))
+- Fix: missing comma ([#63](https://github.com/figuren-theater/.github/pull/63))
+- TRY-toFIX: ([#62](https://github.com/figuren-theater/.github/pull/62))
+- TRY-toFIX: Unhandled error: TypeError: Cannot read properties of unde… ([#61](https://github.com/figuren-theater/.github/pull/61))
+- TEST new pre-release workflow ([#60](https://github.com/figuren-theater/.github/pull/60))
+- Use bot-token to be able to create PRs from GH actions ([#59](https://github.com/figuren-theater/.github/pull/59))
+- Switch actions to allow for org-wide requied status-checks ([#58](https://github.com/figuren-theater/.github/pull/58))
 
 ## [0.1.7](https://github.com/figuren-theater/.github/compare/0.1.6...0.1.7) - 2023-07-05
 
