@@ -104,7 +104,7 @@ jobs:
           ref: ${{ env.LATEST_COMMIT_ID }}
 
       - name: publish pre-Release as Release
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.BOT_TOKEN }}
           script: |
