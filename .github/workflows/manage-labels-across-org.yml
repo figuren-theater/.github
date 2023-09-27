@@ -10,7 +10,9 @@ jobs:
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
     name: manage-your-labels
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.BOT_TOKEN }}
-      - uses: actions-automation/manage-your-labels@main
+      # TODO #100 switch back to 'actions-automation/manage-your-labels' when the 'Error on archived repositories' is fixed or merged anyhow
+      # see https://github.com/actions-automation/manage-your-labels/issues/4
+      - uses: pact-foundation/manage-your-labels@7aad2c5c8839b418ec80b79125b7f0fc28c916a4
