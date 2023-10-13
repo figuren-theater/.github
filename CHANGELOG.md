@@ -2,7 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.8...HEAD)
+## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.9...HEAD)
+
+## [0.1.9](https://github.com/figuren-theater/.github/compare/0.1.8...0.1.9) - 2023-10-13
+
+- Develop ([#92](https://github.com/figuren-theater/.github/pull/92))
+
+### 🐛 Fixed
+
+- Switch 'manage-labels' action to fixed version ([#101](https://github.com/figuren-theater/.github/pull/101))
+
+### Dependency Updates & Maintenance
+
+- Bump actions/checkout from 3 to 4 ([#93](https://github.com/figuren-theater/.github/pull/93))
+- Update figuren-theater/code-quality requirement from ^0.4.3 to ^0.6.6 ([#90](https://github.com/figuren-theater/.github/pull/90))
+- Bump actions/add-to-project from 0.4.0 to 0.5.0 ([#85](https://github.com/figuren-theater/.github/pull/85))
+- Bump actions/github-script from 5 to 6 ([#84](https://github.com/figuren-theater/.github/pull/84))
 
 ## [0.1.8](https://github.com/figuren-theater/.github/compare/0.1.7...0.1.8) - 2023-07-15
 
