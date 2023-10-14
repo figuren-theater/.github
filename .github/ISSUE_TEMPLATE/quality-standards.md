@@ -20,8 +20,8 @@ assignees: ''
 - [ ] Add [`phpstan.neon`](https://github.com/figuren-theater/new-ft-module/blob/main/phpstan.neon) file
 - [ ] Run `composer require --dev figuren-theater/code-quality`
 - [ ] Run `composer normalize`
-- [ ] Run `vendor/bin/phpstan analyze .`
-- [ ] Run `vendor/bin/phpcs .`
+- [ ] Run `vendor/bin/phpstan analyze .` without errors
+- [ ] Run `vendor/bin/phpcs .` without errors
 - [ ] Fix all errors ;)
 - [ ] commit, PR & merge all (additional) changes !
 - [ ] Has branch protection enabled ?
@@ -36,7 +36,11 @@ assignees: ''
 
 ```[tasklist]
 ### Plugin Standards
-- [ ] Has `DE_**` translation(s) available (if present in the UI)
+- [ ] Plugin is translation ready
+- [ ] Has `de_DE` & `de_DE_formal` translation(s) available (if present in the UI)
+- [ ] Run `npm run lint:js` without errors
+- [ ] Run `npm run lint:css` without errors
+- [ ] Run `npm run lint:pkg-json` without errors
 ```
 
 ```[tasklist]
@@ -45,4 +49,8 @@ assignees: ''
 - [ ] Is labeled as **accessibility-ready**
 ```
 
+```[tasklist]
+### Plugins only
+- [ ] Plugin is translation ready and already translated to de_DE and de_DE_formal
+```
 
