@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/.github/compare/0.1.9...HEAD)
+## [Unreleased](https://github.com/figuren-theater/.github/compare/0.2.0...HEAD)
+
+## [0.2.0](https://github.com/figuren-theater/.github/compare/0.1.9...0.2.0) - 2023-11-22
+
+### 🚀 Added
+
+- Add 'skipped' to the accetable statuses when pushing to a protected branch within an automated action ([#105](https://github.com/figuren-theater/.github/pull/105))
+- Update 'Establish quality standards' issue-template ([#103](https://github.com/figuren-theater/.github/pull/103))
 
 ## [0.1.9](https://github.com/figuren-theater/.github/compare/0.1.8...0.1.9) - 2023-10-13
 
