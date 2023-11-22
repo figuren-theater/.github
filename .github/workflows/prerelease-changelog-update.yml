@@ -77,6 +77,7 @@ jobs:
           # branch: ${{ github.event.release.target_commitish }}
           branch: main
           #unprotect_reviews: true # has anoying side-effect: settings stays disabled if workflow fails
+          acceptable_conclusions: success,skipped # A comma-separated list of acceptable statuses. If any of these statuses are present, the action will not fail.
 
   #-----------------------------------------------------------------------------------------------------------------------
 
