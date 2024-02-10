@@ -1,5 +1,5 @@
 ---
-name: Quality Standards
+name: Establish quality standards
 about: "[More an internal] issue template to keep track of all quality best-practices."
 title: Establish quality standards
 labels: 'automation'
