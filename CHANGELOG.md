@@ -2,7 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/figuren-theater/.github/compare/0.2.0...HEAD)
+## [Unreleased](https://github.com/figuren-theater/.github/compare/0.3.0...HEAD)
+
+## [0.3.0](https://github.com/figuren-theater/.github/compare/0.2.0...0.3.0) - 2024-02-10
+
+### 🐛 Fixed
+
+- Revert back to (fixed) original 'manage-your-labels' action ([#108](https://github.com/figuren-theater/.github/pull/108))
+
+### 🚀 Added
+
+- NEW Checklist to properly prepare for & submit plugins to wp.org ([#107](https://github.com/figuren-theater/.github/pull/107))
+
+### Dependency Updates & Maintenance
+
+- Bump actions/github-script from 6 to 7 ([#104](https://github.com/figuren-theater/.github/pull/104))
+- Bump release-drafter/release-drafter from 5 to 6 ([#106](https://github.com/figuren-theater/.github/pull/106))
 
 ## [0.2.0](https://github.com/figuren-theater/.github/compare/0.1.9...0.2.0) - 2023-11-22
 
