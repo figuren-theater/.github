@@ -1,0 +1,8 @@
+{
+    "name": "WordPress plugin checks",
+    "description": "A GitHub action to run WordPresss' 'Plugin Check' against a plugin. Results are posted as file annotations.",
+    "iconName": "ft-logo",
+    "categories": [
+        "Automation"
+    ]
+}
