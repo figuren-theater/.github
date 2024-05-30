@@ -53,31 +53,21 @@ jobs:
 
           # A `plugin.php' is the most common and can be found in almost(!) every repository.
           if [ -f plugin.php ]; then
-            echo "NEW version in plugin.php: $NEW_VERSION"
-            # sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\\1$NEW_VERSION/g" plugin.php
-            # sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+\\\1$NEW_VERSION/g" plugin.php
-            # sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+$1pizza/g" plugin.php
+            echo "Maybe UPDATE version in plugin.php: $NEW_VERSION"
             # made with https://seddy.dev/
             sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" plugin.php
-            # git commit -am "Update version to $NEW_VERSION"
           fi
 
           # A 'readme.md' needs to be in place for regular Plugins hosted on wp.org/plugins.
           if [ -f readme.md ]; then
-            echo "NEW version in readme.md: $NEW_VERSION"
-            # sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\\1$NEW_VERSION/g" readme.md
-            # sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
-            # validated with seddy.dev
+            echo "Maybe UPDATE version in readme.md: $NEW_VERSION"
             sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
-            # git commit -am "Update version to $NEW_VERSION"
           fi
 
           # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
           if [ -f package.json ]; then
-            echo "NEW version in package.json: $NEW_VERSION"
-            # sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g" package.json
+            echo "Maybe UPDATE version in package.json: $NEW_VERSION"
             sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g" package.json
-            # git commit -am "Update version to $NEW_VERSION"
           fi
 
           if git diff --quiet --exit-code .; then
@@ -86,18 +76,6 @@ jobs:
             git commit -am "Update version-numbers to $NEW_VERSION"
           fi
 
-    #  - uses: EndBug/add-and-commit@v9
-    #    with:
-    #      # Adding files
-    #      # https://github.com/EndBug/add-and-commit/tree/v9/#adding-files
-    #      add: 'plugin.php package.json'
-    #      message: Update version to ${{ github.event.release.tag_name }}
-    #      # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
-    #      # Default: true
-    #      push: false
-    #      committer_name: Frieda Theodor Automatisierungs-Bot <email-roboter@figuren.theater>
-    #      committer_email: email-roboter@figuren.theater
-#
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
         with:
