@@ -53,13 +53,13 @@ jobs:
         env:
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
-            echo "deploy=no" >> $GITHUB_OUTPUT
+            echo "deploy=no" >> "$GITHUB_OUTPUT"
 
           # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
           if [ -f package.json ]; then
             echo "Maybe UPDATE version in package.json: $NEW_VERSION"
-            echo "deploy=BUILD" >> $GITHUB_OUTPUT
             sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g" package.json
+            echo "deploy=BUILD" >> "$GITHUB_OUTPUT"
           fi
 
           # A `plugin.php' is the most common and can be found in almost(!) every repository.
@@ -72,7 +72,7 @@ jobs:
           # A 'readme.md' needs to be in place for regular Plugins hosted on wp.org/plugins.
           if [ -f readme.md ]; then
             echo "Maybe UPDATE version in readme.md: $NEW_VERSION"
-            echo "deploy=WPORG" >> $GITHUB_OUTPUT
+            echo "deploy=WPORG" >> "$GITHUB_OUTPUT"
             sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
           fi
 
