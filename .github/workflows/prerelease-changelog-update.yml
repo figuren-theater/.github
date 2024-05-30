@@ -72,11 +72,11 @@ jobs:
             # git commit -am "Update version to $NEW_VERSION"
           fi
 
-if git diff --quiet --exit-code .; then
-  echo "No changes made to any version-related file, skipping commit."
-else
-  git commit -am "Update version-numbers to $NEW_VERSION"
-fi
+          if git diff --quiet --exit-code .; then
+            echo "No changes made to any version-related file, skipping commit."
+          else
+            git commit -am "Update version-numbers to $NEW_VERSION"
+          fi
 
     #  - uses: EndBug/add-and-commit@v9
     #    with:
