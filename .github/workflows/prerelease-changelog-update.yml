@@ -152,14 +152,6 @@ jobs:
         with:
           ref: 'main' # Important to keep, even if obvious!
 
-      # - name: Do we need to BUILD or nothing?
-      #   run: |
-      #     if [ -f package.json ]; then
-      #       exit 0;
-      #     else
-      #       exit 1;
-      #     fi
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
