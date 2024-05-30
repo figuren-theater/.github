@@ -10,6 +10,8 @@ jobs:
 
   update:
     runs-on: ubuntu-latest
+    outputs:
+      deploy-type: ${{ steps.update-version-numbers.outputs.deploy }}
 
     steps:
       - name: Checkout code
@@ -45,31 +47,43 @@ jobs:
           committer_name: Frieda Theodor Automatisierungs-Bot <email-roboter@figuren.theater>
           committer_email: email-roboter@figuren.theater
 
-      # @TODO #57 Automatically bump version in all relevant files
+      # Automatically bump version in all relevant files
       - name: Update version number in files
+        id: update-version-numbers
         env:
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
+          # Set default to not do any deployment after this job.
+          echo "deploy=no" >> "$GITHUB_OUTPUT"
 
+          # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
+          if [ -f package.json ]; then
+            echo "Maybe UPDATE version in package.json: $NEW_VERSION"
+            sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g" package.json
+            echo "deploy=BUILD" >> "$GITHUB_OUTPUT"
+          fi
+
+          # A `plugin.php' is the most common and can be found in almost(!) every repository.
           if [ -f plugin.php ]; then
-            echo "NEW version in plugin.php: $NEW_VERSION"
-            sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\\1$NEW_VERSION/g" plugin.php
-            git commit -am "Update version to $NEW_VERSION"
+            echo "Maybe UPDATE version in plugin.php: $NEW_VERSION"
+            # made with https://seddy.dev/
+            sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" plugin.php
+          fi
+
+          # A 'readme.md' needs to be in place for regular Plugins hosted on wp.org/plugins.
+          if [ -f readme.md ]; then
+            echo "Maybe UPDATE version in readme.md: $NEW_VERSION"
+            echo "deploy=WPORG" >> "$GITHUB_OUTPUT"
+            sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
           fi
 
 
-    #  - uses: EndBug/add-and-commit@v9
-    #    with:
-    #      # Adding files
-    #      # https://github.com/EndBug/add-and-commit/tree/v9/#adding-files
-    #      add: 'plugin.php package.json'
-    #      message: Update version to ${{ github.event.release.tag_name }}
-    #      # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
-    #      # Default: true
-    #      push: false
-    #      committer_name: Frieda Theodor Automatisierungs-Bot <email-roboter@figuren.theater>
-    #      committer_email: email-roboter@figuren.theater
-#
+          if git diff --quiet --exit-code .; then
+            echo "No changes made to any version-related file, skipping commit."
+          else
+            git commit -am "Update version-numbers to $NEW_VERSION"
+          fi
+
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
         with:
@@ -95,7 +109,7 @@ jobs:
       - name: Get latest commit ID
         run: |
           latest_commit_id=$(git rev-parse HEAD)
-          echo "The latest commit ID is $latest_commit_id"
+          echo "JOBS:RELEASE: The latest commit ID is $latest_commit_id"
           echo "LATEST_COMMIT_ID=$latest_commit_id" >> $GITHUB_ENV
 
       - uses: jimeh/update-tags-action@v1
@@ -123,3 +137,64 @@ jobs:
               prerelease: false,
               make_latest: true
             });
+
+  #-----------------------------------------------------------------------------------------------------------------------
+
+  deploy-to-wp-repository:
+    needs: ['update', 'release']
+    if: needs.update.outputs.deploy-type != 'no'
+    name: Upload release asset & maybe deploy to WP.org
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: 'main' # Important to keep, even if obvious!
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: latest
+          coverage: none
+          tools: wp-cli
+
+      - name: Install latest version of dist-archive-command
+        run: wp package install wp-cli/dist-archive-command:dev-main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          # Make sure to use the same version like WordPress/gutenberg.
+          # node-version-file: '.nvmrc'
+          node-version: v20.11.1
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build plugin
+        run: |
+          npm run build
+          wp dist-archive . ./${{ github.event.repository.name }}.zip
+
+      - name: Upload release asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ github.workspace }}/${{ github.event.repository.name }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Build
+      #   if: needs.update.outputs.deploy-type == 'WPORG'
+      #   run: |
+      #     npm install
+      #     npm run build
+      # # - name: WordPress.org Plugin Deploy
+      # #   id: deploy
+      # #   uses: 10up/action-wordpress-plugin-deploy@stable
+      # #   with:
+      # #     generate-zip: true
+      # #   env:
+      # #     SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+      # #     SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
