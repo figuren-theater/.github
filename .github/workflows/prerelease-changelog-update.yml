@@ -161,6 +161,7 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+          ref: 'main'
 
       - name: Get latest commit ID
         run: |
