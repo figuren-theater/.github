@@ -10,6 +10,8 @@ jobs:
 
   update:
     runs-on: ubuntu-latest
+    outputs:
+      deploy-type: ${{ steps.update-version-numbers.outputs.deploy }}
 
     steps:
       - name: Checkout code
@@ -47,9 +49,18 @@ jobs:
 
       # Automatically bump version in all relevant files
       - name: Update version number in files
+        id: update-version-numbers
         env:
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
+            echo "deploy=no" >> $GITHUB_OUTPUT
+
+          # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
+          if [ -f package.json ]; then
+            echo "Maybe UPDATE version in package.json: $NEW_VERSION"
+            echo "deploy=BUILD" >> $GITHUB_OUTPUT
+            sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g" package.json
+          fi
 
           # A `plugin.php' is the most common and can be found in almost(!) every repository.
           if [ -f plugin.php ]; then
@@ -61,14 +72,10 @@ jobs:
           # A 'readme.md' needs to be in place for regular Plugins hosted on wp.org/plugins.
           if [ -f readme.md ]; then
             echo "Maybe UPDATE version in readme.md: $NEW_VERSION"
+            echo "deploy=WPORG" >> $GITHUB_OUTPUT
             sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
           fi
 
-          # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
-          if [ -f package.json ]; then
-            echo "Maybe UPDATE version in package.json: $NEW_VERSION"
-            sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g" package.json
-          fi
 
           if git diff --quiet --exit-code .; then
             echo "No changes made to any version-related file, skipping commit."
@@ -134,41 +141,23 @@ jobs:
 
   deploy-to-wp-repository:
     needs: ['update', 'release']
-    name: Deploy to WP.org
+    if: needs.update.outputs.deploy-type != 'no'
+    name: Upload release asset & maybe deploy to WP.org
     runs-on: ubuntu-latest
-    # if: github.event.release.edited == true && contains(github.event.head_commit.message, 'Update wporg-related-version to ')
-    # if: contains(github.event.head_commit.message, 'Update wporg-related-version to ')
-
-    # if: contains(github.event.head_commit.message, 'Update version-numbers to ') && contains(github.event.head_commit.modified, 'readme.md')
-    # if: contains(github.event.head_commit.message, 'Update version-numbers to ')
-    # if: contains(github.event.head_commit.modified, 'readme.md')
     steps:
- 
-      # - name: Checkout code
-      #   uses: actions/checkout@v4
-      # - name: Build
-      #   run: |
-      #     npm install
-      #     npm run build
-      # # - name: WordPress.org Plugin Deploy
-      # #   id: deploy
-      # #   uses: 10up/action-wordpress-plugin-deploy@stable
-      # #   with:
-      # #     generate-zip: true
-      # #   env:
-      # #     SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-      # #     SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
 
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: 'main'
+          ref: 'main' # Important to keep, even if obvious!
 
-      - name: Get latest commit ID
-        run: |
-          latest_commit_id=$(git rev-parse HEAD)
-          echo "JOBS:DEPLOY-TO-WP: The latest commit ID is $latest_commit_id"
-          echo "LATEST_COMMIT_ID=$latest_commit_id" >> $GITHUB_ENV
+      # - name: Do we need to BUILD or nothing?
+      #   run: |
+      #     if [ -f package.json ]; then
+      #       exit 0;
+      #     else
+      #       exit 1;
+      #     fi
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -202,3 +191,27 @@ jobs:
           files: ${{ github.workspace }}/${{ github.event.repository.name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+      # - name: Do we need to DEPLOY-TO-WP or nothing?
+      #   run: |
+      #     if [[ -f plugin.php && -d .wordpress-org ]]; then
+      #       exit 0;
+      #     else
+      #       exit 1;
+      #     fi
+
+      # - name: Build
+
+        # if: needs.update.outputs.deploy-type == 'WPORG'
+      #   run: |
+      #     npm install
+      #     npm run build
+      # # - name: WordPress.org Plugin Deploy
+      # #   id: deploy
+      # #   uses: 10up/action-wordpress-plugin-deploy@stable
+      # #   with:
+      # #     generate-zip: true
+      # #   env:
+      # #     SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+      # #     SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
