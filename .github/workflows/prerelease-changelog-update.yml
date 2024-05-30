@@ -53,7 +53,7 @@ jobs:
         env:
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
-            echo "deploy=no" >> "$GITHUB_OUTPUT"
+          echo "deploy=no" >> "$GITHUB_OUTPUT"
 
           # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
           if [ -f package.json ]; then
