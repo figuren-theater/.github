@@ -133,7 +133,7 @@ jobs:
   #-----------------------------------------------------------------------------------------------------------------------
 
   deploy-to-wp-repository:
-    needs: release
+    needs: ['update', 'release']
     name: Deploy to WP.org
     runs-on: ubuntu-latest
     # if: github.event.release.edited == true && contains(github.event.head_commit.message, 'Update wporg-related-version to ')
