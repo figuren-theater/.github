@@ -54,7 +54,11 @@ jobs:
           # A `plugin.php' is the most common and can be found in almost(!) every repository.
           if [ -f plugin.php ]; then
             echo "NEW version in plugin.php: $NEW_VERSION"
-            sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\\1$NEW_VERSION/g" plugin.php
+            # sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\\1$NEW_VERSION/g" plugin.php
+            # sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+\\\1$NEW_VERSION/g" plugin.php
+            # sed -ri "s/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+$1pizza/g" plugin.php
+            # made with https://seddy.dev/
+            sed -ri 's/(Version:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g' plugin.php
             # git commit -am "Update version to $NEW_VERSION"
           fi
 
@@ -62,14 +66,17 @@ jobs:
           if [ -f readme.md ]; then
             echo "NEW version in readme.md: $NEW_VERSION"
             # sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\\1$NEW_VERSION/g" readme.md
-            sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
+            # sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
+            # validated with seddy.dev
+            sed -ri 's/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g' readme.md
             # git commit -am "Update version to $NEW_VERSION"
           fi
 
           # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
           if [ -f package.json ]; then
             echo "NEW version in package.json: $NEW_VERSION"
-            sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\"/\1$NEW_VERSION\2/g" package.json
+            # sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g" package.json
+            sed -ri 's/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g' package.json
             # git commit -am "Update version to $NEW_VERSION"
           fi
 
