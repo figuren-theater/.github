@@ -101,7 +101,7 @@ jobs:
       - name: Get latest commit ID
         run: |
           latest_commit_id=$(git rev-parse HEAD)
-          echo "The latest commit ID is $latest_commit_id"
+          echo "JOBS:RELEASE: The latest commit ID is $latest_commit_id"
           echo "LATEST_COMMIT_ID=$latest_commit_id" >> $GITHUB_ENV
 
       - uses: jimeh/update-tags-action@v1
@@ -161,6 +161,12 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Get latest commit ID
+        run: |
+          latest_commit_id=$(git rev-parse HEAD)
+          echo "JOBS:DEPLOY-TO-WP: The latest commit ID is $latest_commit_id"
+          echo "LATEST_COMMIT_ID=$latest_commit_id" >> $GITHUB_ENV
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
