@@ -53,6 +53,7 @@ jobs:
         env:
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
+          # Set default to not do any deployment after this job.
           echo "deploy=no" >> "$GITHUB_OUTPUT"
 
           # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
@@ -82,8 +83,6 @@ jobs:
           else
             git commit -am "Update version-numbers to $NEW_VERSION"
           fi
-
-          echo "deploy=no" >> "$GITHUB_OUTPUT"
 
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
