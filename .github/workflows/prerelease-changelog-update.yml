@@ -83,6 +83,8 @@ jobs:
             git commit -am "Update version-numbers to $NEW_VERSION"
           fi
 
+          echo "deploy=no" >> "$GITHUB_OUTPUT"
+
       - name: Push to protected branch
         uses: CasperWA/push-protected@v2
         with:
@@ -192,18 +194,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
-      # - name: Do we need to DEPLOY-TO-WP or nothing?
-      #   run: |
-      #     if [[ -f plugin.php && -d .wordpress-org ]]; then
-      #       exit 0;
-      #     else
-      #       exit 1;
-      #     fi
-
       # - name: Build
-
-        # if: needs.update.outputs.deploy-type == 'WPORG'
+      #   if: needs.update.outputs.deploy-type == 'WPORG'
       #   run: |
       #     npm install
       #     npm run build
