@@ -185,7 +185,7 @@ jobs:
           wp dist-archive . ./${{ github.event.repository.name }}.zip
 
       - name: Upload release asset
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: ${{ github.workspace }}/${{ github.event.repository.name }}.zip
         env:
