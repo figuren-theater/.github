@@ -10,7 +10,7 @@ jobs:
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
     name: manage-your-labels
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           token: ${{ secrets.BOT_TOKEN }}
       - uses: actions-automation/manage-your-labels@main
