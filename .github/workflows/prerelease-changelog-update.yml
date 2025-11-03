@@ -118,7 +118,7 @@ jobs:
           echo "JOBS:RELEASE: The latest commit ID is $latest_commit_id"
           echo "LATEST_COMMIT_ID=$latest_commit_id" >> $GITHUB_ENV
 
-      - uses: jimeh/update-tags-action@v1
+      - uses: jimeh/update-tags-action@v2
         with:
           tags: ${{ github.event.release.tag_name }},latest
           github_token: ${{ secrets.BOT_TOKEN }}
