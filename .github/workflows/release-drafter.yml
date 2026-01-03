@@ -3,7 +3,7 @@ name: 'Draft next Release notes'
 on:
   workflow_call:
     secrets:
-      BOT_TOKEN:
+      GITHUB_TOKEN:
         required: true
   push:
     # branches to consider in the event; optional, defaults to all
