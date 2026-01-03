@@ -2,6 +2,9 @@ name: 'pre-Release Changelog Update'
 
 on:
   workflow_call:
+    secrets:
+      BOT_TOKEN:
+        required: true
   release:
     types: [prereleased]
 
