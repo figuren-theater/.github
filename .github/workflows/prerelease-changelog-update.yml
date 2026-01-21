@@ -88,7 +88,7 @@ jobs:
 
           # A 'readme.md' needs to be in place for regular Plugins hosted on wp.org/plugins.
           if [ -f readme.md ]; then
-            sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
+            sed -ri "s/((\*\*)?Stable tag:(\*\*)?[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" readme.md
 
             if ! git diff --quiet --exit-code readme.md; then
               echo "Update version in readme.md: $NEW_VERSION"
@@ -97,7 +97,7 @@ jobs:
           fi
           # A 'README.md' needs to be in place for regular Plugins hosted on wp.org/plugins.
           if [ -f README.md ]; then
-            sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" README.md
+            sed -ri "s/((\*\*)?Stable tag:(\*\*)?[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" README.md
 
             if ! git diff --quiet --exit-code README.md; then
               echo "Update version in README.md: $NEW_VERSION"
