@@ -69,6 +69,16 @@ jobs:
             fi
           fi
 
+          # A 'src/block.json' can be in place as the general contract for a WordPress block.
+          if [ -f src/block.json ]; then
+            sed -ri "s/(\"version\":[[:space:]]*\")[0-9]+\.[0-9]+\.[0-9]+(\")/\1$NEW_VERSION\2/g" src/block.json
+
+            if ! git diff --quiet --exit-code src/block.json; then
+              echo "Update version in src/block.json: $NEW_VERSION"
+              echo "deploy=BUILD" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
           # A `plugin.php' is the most common and can be found in almost(!) every repository.
           if [ -f plugin.php ]; then
             echo "UPDATE version in plugin.php: $NEW_VERSION"
@@ -82,6 +92,15 @@ jobs:
 
             if ! git diff --quiet --exit-code readme.md; then
               echo "Update version in readme.md: $NEW_VERSION"
+              echo "deploy=WPORG" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+          # A 'README.md' needs to be in place for regular Plugins hosted on wp.org/plugins.
+          if [ -f README.md ]; then
+            sed -ri "s/(Stable tag:[[:space:]]*)[0-9]+\.[0-9]+\.[0-9]+/\1$NEW_VERSION/g" README.md
+
+            if ! git diff --quiet --exit-code README.md; then
+              echo "Update version in README.md: $NEW_VERSION"
               echo "deploy=WPORG" >> "$GITHUB_OUTPUT"
             fi
           fi
