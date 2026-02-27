@@ -29,7 +29,7 @@ jobs:
         #
         # Add the following to 'with:' 'token: ${{ secrets.PAT }}'
         #
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.BOT_TOKEN || github.token }}
           ref: ${{ github.event.release.target_commitish }}
@@ -129,7 +129,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.BOT_TOKEN || github.token }}
           ref: 'main'
@@ -176,7 +176,7 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: 'main' # Important to keep, even if obvious!
 
