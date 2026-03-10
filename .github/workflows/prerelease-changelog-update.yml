@@ -56,8 +56,13 @@ jobs:
         env:
           NEW_VERSION: ${{ github.event.release.tag_name }}
         run: |
-          # Set default to not do any deployment after this job.
-          echo "deploy=no" >> "$GITHUB_OUTPUT"
+          # Set 'deploy' if a .distignore file exists,
+          # otherwise use a default output of 'no' to avoid issues with missing output in case no file is changed.
+          if [ -f .distignore ]; then
+            echo "deploy=BUILD" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=no" >> "$GITHUB_OUTPUT"
+          fi
 
           # A 'package.json' can be in place for Plugins or modules, that uses any build or test runs.
           if [ -f package.json ]; then
