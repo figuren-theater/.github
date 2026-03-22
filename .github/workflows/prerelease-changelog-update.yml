@@ -190,7 +190,7 @@ jobs:
         with:
           php-version: latest
           coverage: none
-          tools: wp-cli
+          tools: wp-cli:2.13
 
       - name: Update WP-CLI
         run: wp cli update --yes
