@@ -190,10 +190,10 @@ jobs:
         with:
           php-version: latest
           coverage: none
-          tools: wp-cli:2.13
+          tools: wp-cli:2
 
-      - name: Install latest version of dist-archive-command
-        run: wp package install wp-cli/dist-archive-command:@stable
+      - name: Install 3.2.0 version of dist-archive-command
+        run: wp package install wp-cli/dist-archive-command:3.2.0
 
       - name: Setup Node
         uses: actions/setup-node@v4
