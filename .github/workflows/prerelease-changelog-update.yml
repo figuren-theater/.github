@@ -40,7 +40,7 @@ jobs:
           release-notes: ${{ github.event.release.body }}
           latest-version: ${{ github.event.release.tag_name }}
 
-      - uses: EndBug/add-and-commit@v9
+      - uses: EndBug/add-and-commit@v10
         with:
           add: 'CHANGELOG.md'
           message: Update changelog to ${{ github.event.release.tag_name }}
