@@ -193,14 +193,14 @@ jobs:
           tools: wp-cli:2
 
       - name: Install 3.1.0 version of dist-archive-command
-        run: wp package install wp-cli/dist-archive-command:3.1.0
+        run: wp package install wp-cli/dist-archive-command
 
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           # Make sure to use the same version like WordPress/gutenberg.
           # node-version-file: '.nvmrc'
-          node-version: v20.11.1
+          node-version: v24
           cache: npm
 
       - name: Install dependencies
