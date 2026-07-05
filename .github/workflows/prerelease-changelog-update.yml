@@ -193,7 +193,7 @@ jobs:
           tools: wp-cli:2
 
       - name: Install 3.1.0 version of dist-archive-command
-        run: wp package install wp-cli/dist-archive-command
+        run: wp package install wp-cli/dist-archive-command:@stable
 
       - name: Setup Node
         uses: actions/setup-node@v6
