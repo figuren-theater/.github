@@ -203,7 +203,7 @@ jobs:
           wp package install wp-cli/dist-archive-command:^2
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           # Make sure to use the same version like WordPress/gutenberg.
           # node-version-file: '.nvmrc'
